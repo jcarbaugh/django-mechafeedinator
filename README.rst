@@ -2,7 +2,7 @@
 django-mechafeedinator
 ======================
 
-A "fork" of `django-feedinator <https://github.com/sunlightlabs/django-feedinator>` RSS aggregator.
+A "fork" of `django-feedinator <https://github.com/sunlightlabs/django-feedinator>`_ RSS aggregator.
 
 mechafeedinator adds::
 
