@@ -41,6 +41,7 @@ class Item(models.Model):
     def __unicode__(self):
         return u"%s: %s" % (self.feed.title, self.title)
 
+
 class Content(models.Model):
     item = models.ForeignKey(Item, related_name="content")
     value = models.CharField(blank=True)

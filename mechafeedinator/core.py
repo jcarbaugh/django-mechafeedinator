@@ -19,7 +19,7 @@ def update_feed(feed):
             # update existing item, if it exists
 
             item = Item.objects.get(feed=feed, uid=entry.id)
-            update_item(item, entry)
+            populate_item(item, entry)
 
         except Item.DoesNotExist:
 
@@ -32,12 +32,12 @@ def update_feed(feed):
                 link=entry.link,
                 date_fetched=now,
             )
-            update_item(item, entry)
+            populate_item(item, entry)
 
     feed.last_fetched = now
     feed.save()
 
-def update_item(item, entry):
+def populate_item(item, entry):
 
     item.summary = entry.get('summary', '')
     item.save()
