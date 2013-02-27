@@ -3,9 +3,9 @@ from django.db import models
 import datetime
 
 class Feed(models.Model):
-    url = models.URLField(verify_exists=False)
+    url = models.URLField()
     title = models.CharField(max_length=255, blank=True)
-    link = models.URLField(verify_exists=False, blank=True)
+    link = models.URLField(blank=True)
     description = models.TextField(blank=True)
     ttl = models.IntegerField(default=60)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -26,11 +26,11 @@ class Item(models.Model):
     feed = models.ForeignKey(Feed, related_name="items")
     uid = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    link = models.URLField(verify_exists=False, blank=True)
+    link = models.URLField(blank=True)
     summary = models.TextField(blank=True)
     author_name = models.CharField(max_length=255, blank=True)
     author_email = models.EmailField(blank=True, null=True)
-    author_uri = models.URLField(verify_exists=False, blank=True, null=True)
+    author_uri = models.URLField(blank=True, null=True)
     date_published = models.DateTimeField(blank=True, null=True)
     date_updated = models.DateTimeField(blank=True, null=True)
     date_fetched = models.DateTimeField()
@@ -52,7 +52,7 @@ class Content(models.Model):
 
 class Enclosure(models.Model):
     item = models.ForeignKey(Item, related_name="enclosures")
-    url = models.URLField(verify_exists=False)
+    url = models.URLField()
     mimetype = models.CharField(max_length=128, blank=True)
 
     def __unicode__(self):
